@@ -1,0 +1,67 @@
+# Email validation code using string function's.
+
+"""
+email = input("Enter the email id for validation : ")   # g@g.in
+j,k,d=0,0,0
+
+if len(email) >= 6 :
+    if email[0].isalpha() :
+        if ("@" in email) and (email.count("@")==1) :
+            if (email[-4]==".") ^ (email[-3]==".") :
+                for i in email :
+                    if i == i.isspace():
+                        k=1
+                    elif i.isalpha():
+                        if i==i.upper():
+                            j=1
+                    elif i.isdigit():
+                        continue
+                    elif i=="_" or i=="." or i=="@" :
+                        continue
+                    else:
+                        d=1
+                    
+                if k==1 or j==1 or d==1 :
+                    print("Wrong email 5")
+            else:
+                print("Wrong email 4")
+        else:
+            print("Wrong email 3")
+    else:
+        print("Wrong email 2")
+else:
+    print("Wrong email 1")
+
+""
+
+# Email validation code using REGEX code.
+
+import re
+email_condition = "^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+user_email = input("Enter Your Email : ")
+
+if re.search(email_condition, user_email) :
+    print("Valid Email")
+else:
+    print("Invalid Email")
+
+"""
+
+# Email validation code using python libraries.
+
+from email_validator import validate_email, EmailNotValidError
+user_email = input("Enter your email : ")
+
+def check(email):
+
+    try:
+        v = validate_email(email)
+        email = v["email"]
+        print("The Email is valid")
+    
+    except EmailNotValidError as e :
+        print(e)
+
+if __name__ == "__main__" :
+
+    check(user_email)
